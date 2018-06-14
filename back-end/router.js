@@ -6,12 +6,6 @@ const router = express.Router()
 router.route('/').get(function(request, response) {
     response.send('Hello World')
 })
-/*
-router.route('/news').get((request, response)=>{
-    const news = [{'Title':1}]
-    response.send('news')
-})
-*/
 
 router.route('/news').get(function(request, response) {
     const news = [{'Title':1}]
@@ -29,8 +23,5 @@ router.route('/news/:id').get(function(request, response) {
         .then((HttpResponse)=> response.send(HttpResponse.data.articles[param.id]))
     console.log(param.id)
 })
-
-
-
 
 module.exports = router
