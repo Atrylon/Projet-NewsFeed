@@ -40,6 +40,7 @@ let clients = []
 
 wsServer.on('connection', (webSocket) => {
     console.log('WebSocket Server :: a new client has connected')
+    //webSocket.send()
     
     webSocket.onclose = (event) => {
         console.log('WebSocket :: client disconnected')
