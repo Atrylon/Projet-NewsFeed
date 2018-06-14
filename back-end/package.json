@@ -1,5 +1,5 @@
 {
-  "name": "news-api",
+  "name": "AreyouReddit-back",
   "version": "1.0.0",
   "description": "News Feed back-end",
   "main": "index.js",

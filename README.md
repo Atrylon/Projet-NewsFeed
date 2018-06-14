@@ -1,4 +1,4 @@
-# Projet - NewsFeed
+    # Projet - NewsFeed
 
 Le but de ce projet est de réaliser une application web affichant un flux de news relatif à un sujet spécifique.
 
