@@ -8981,6 +8981,68 @@ a.text-dark:hover, a.text-dark:focus {
 /*# sourceMappingURL=bootstrap.css.map */
 
 
+/**********************Articles page*******************/
+.article{
+  box-shadow: 0px 0px 6px #999;
+  height: 500px;
+  padding: 10px;
+  border-radius: 5px;
+}
+.article .head{
+  height: 100px;
+}
+.article h3{
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.article .author{
+  text-align: center;
+  font-style: italic;
+}
+.article img{
+  height: 300px;
+  margin: auto;
+  display: block;
+}
+.article .details{
+  position: relative;
+  padding-top: 10px;
+}
+.article .image{
+  height: 300px;
+}
+.article .description{
+  position: absolute;
+  width: 94%;
+  top: 50%;
+  height: 320px;
+  margin-top: -155px;
+  padding: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  z-index: 500;
+  color: #f2f2f2;
+  background: rgba(56,56,56,.9);
+  display: none;
+}
+.article .details:hover .description {
+  display: block!important;
+}
+.article .details{
+  margin-bottom: 50px;
+}
+.article .published{
+  text-align: center;
+  font-size: 12px;
+}
+
+
+
+
+
+
+
+
 
 
 

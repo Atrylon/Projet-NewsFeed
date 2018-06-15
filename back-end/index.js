@@ -30,6 +30,7 @@ function initWSServer() {
     return wss
 }
 
+
 //
 const httpServer = initHttpServer()
 const wsServer = initWSServer()
@@ -37,20 +38,39 @@ const wsServer = initWSServer()
 // WebSocket Server events binding
 
 let clients = []
+var lastData = ''
+var maj = ''
 
 wsServer.on('connection', (webSocket) => {
     console.log('WebSocket Server :: a new client has connected')
-    //webSocket.send()
     
     webSocket.onclose = (event) => {
         console.log('WebSocket :: client disconnected')
         clients = clients.filter((client) => client !== webSocket)
     }
     webSocket.onmessage = (message) => {
-        console.log('WebSocket :: got a new message', message.data)
+        //console.log('WebSocket :: got a new message', message.data)
+        //webSocket.send('ok')
+
+        if(lastData !== ''){
+            var a =lastData.localeCompare(message.data)
+            console.log(a)
+            if(a===0){
+                console.log('nouvelles donnees');
+                //L'envoi ne fonctionne toujours pas :(
+                webSocket.send('ko : ');
+                maj = 'nouvelles donnees'
+            }
+        }
+        maj='rien de nouveau'
+
+        lastData = message.data
+        webSocket.send('WebSocket :: got a new message', message.data)
     }
     clients.push(webSocket)
+
 })
+
 
 
 // Servers log

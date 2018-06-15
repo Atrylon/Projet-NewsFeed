@@ -1,6 +1,6 @@
 # News Feed Project - Front-end
 
-Written by {YOUR_NAMES_OR_LOGINS}
+Written by LAUWICK Nicolas & DESGARDIN Bérenger
 
 ## How to run the project
 
