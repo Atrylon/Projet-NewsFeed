@@ -54,6 +54,19 @@ else{
                 var urlImage = `${HttpResponse.data.articles[i].urlToImage}`
                 var datePublication = `${HttpResponse.data.articles[i].publishedAt}`
 
+                if (auteur === 'null'){
+                    auteur = 'Anonyme'
+                }
+                if (urlImage === 'null'){
+                    urlImage = 'http://www.drahtphotography.com/wp-content/uploads/2016/04/Reddit-Logo-Smaller.png'
+                }
+                if (description === 'null'){
+                    description = 'Pas de description disponible'
+                }
+                if (titre === 'null'){
+                    titre = 'Pas de titre disponible'
+                }
+
                 document.getElementById("row").innerHTML+=
                     `
             <div class="col-12 col-lg-4" >
