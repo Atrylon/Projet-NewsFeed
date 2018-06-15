@@ -27,6 +27,19 @@ if (param){
                 var urlImage = `${HttpResponse.data.articles[param].urlToImage}`
                 var datePublication = `${HttpResponse.data.articles[param].publishedAt}`
 
+                if (auteur === 'null'){
+                    auteur = 'Anonyme'
+                }
+                if (urlImage === 'null'){
+                    urlImage = 'http://www.drahtphotography.com/wp-content/uploads/2016/04/Reddit-Logo-Smaller.png'
+                }
+                if (description === 'null'){
+                    description = 'Pas de description disponible'
+                }
+                if (titre === 'null'){
+                    titre = 'Pas de titre disponible'
+                }
+
                 document.getElementById("row").innerHTML=`
                 <article id="redditArticle${param}" class="col-sm-12" >
                    <h3 class='text-center'>${titre}</h3> <br>
@@ -91,7 +104,8 @@ else{
                             <img src="${urlImage}" class="img-fluid">
                         </div>
                         <div>
-                            <button type="button" class="btn btn-primary" href="${url}">Voir plus</button>
+                            <a type="button" class="btn btn-primary" href="${url}">Voir plus</a>
+                            <a type="button" class="btn btn-info" href="index.html?${i}">Voir l\'article</a>
                         </div>
                     </div>
                     <div class="row">
