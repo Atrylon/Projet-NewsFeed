@@ -15,9 +15,7 @@ var param = location.search
 
 if (param){
     param = param.substr(1, 1)
-    axios.get('https://newsapi.org/v2/top-headlines?' +
-        'sources=reddit-r-all&' +
-        'apiKey=591d3c16f1ab4f129bcd48a5b4480317')
+    axios.get('http://localhost:8080')
         .then((HttpResponse)=>{
 
                 var titre=`${HttpResponse.data.articles[param].title}`
@@ -40,24 +38,55 @@ if (param){
                     titre = 'Pas de titre disponible'
                 }
 
-                document.getElementById("row").innerHTML=`
-                <article id="redditArticle${param}" class="col-sm-12" >
-                   <h3 class='text-center'>${titre}</h3> <br>
-                   <i> Posté par ${auteur} </i> <br>
-                   ${description}<br>
-                   <img src="${urlImage}" style="max-height: 300px; max-width=20%" >  <br>
-                   <div ><a type="button" class="btn btn-primary" href="${url}">Voir plus</a>  Publié il y a  ${datePublication} <br> </div>
-                   <a type="button" class="btn btn-primary" href="index.html">Retourner à l'accueil</a>
-                </article>`
+                document.getElementById("row").innerHTML=
+`
+
+
+                <div class="article mb-4 col-12" id="redditArticle${param}" style="height: 550px;">
+                    <div class="row head">
+                        <div class="col-12 titre text-center">
+                            <h3 class=''>${titre}</h3>
+                        </div>
+                        <div class="col-12 author text-center">
+                            Posté par ${auteur}
+                        </div>
+                    </div>             
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-4 text-center">
+                               ${description}           
+                            </div>
+                            <div class="col-12 image mb-4">
+                                <img src="${urlImage}" class="img-fluid">
+                            </div>
+                        </div> 
+                    </div>
+                       <div class="col-12 lien">
+                           <div class="row">
+                               <div class="col-12 col-lg-4  text-center">
+                                   <a type="button" class="btn btn-primary" href="${url}">Voir plus</a>
+                               </div>
+                               <div class="col-12 col-lg-4  text-center">
+                                    Publié il y a  ${datePublication}
+                               </div>
+                               <div class="col-12 col-lg-4  text-center">
+                                    <a type="button" class="btn btn-primary" href="index.html">Retourner à l'accueil</a> 
+                               </div>
+                           </div>
+                       </div>
+                   
+                </div>
+
+
+
+`
 
 
             }
         )
 }
 else{
-    axios.get('https://newsapi.org/v2/top-headlines?' +
-        'sources=reddit-r-all&' +
-        'apiKey=591d3c16f1ab4f129bcd48a5b4480317')
+    axios.get('http://localhost:8080')
         .then((HttpResponse)=>{
             for (var i = 0; i < HttpResponse.data.totalResults; i++){
                 var titre=`${HttpResponse.data.articles[i].title}`
@@ -83,29 +112,27 @@ else{
                 document.getElementById("row").innerHTML+=
                     `
             <div class="col-12 col-lg-4" >
-                <div class="article" id="redditArticle${i}">
-                    <div class="row">
+                <div class="article mb-4" id="redditArticle${i}">
+                    <div class="row head">
                         <div class="col-12 titre">
                             <h3 class='text-center'>${titre}</h3>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-12 author">
                             Posté par ${auteur}
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row details text-center" >
                         <div class="col-12 description">
-                            ${description}
+                            <div class="mb-4">
+                                ${description}
+                            </div>
+                            <div>
+                            <a type="button" class="btn btn-primary" href="${url}">Voir la source</a>
+                            <a type="button" class="btn btn-info" href="index.html?${i}">Voir l\'article</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-12 image">
                             <img src="${urlImage}" class="img-fluid">
-                        </div>
-                        <div>
-                            <a type="button" class="btn btn-primary" href="${url}">Voir plus</a>
-                            <a type="button" class="btn btn-info" href="index.html?${i}">Voir l\'article</a>
                         </div>
                     </div>
                     <div class="row">
