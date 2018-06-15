@@ -11,15 +11,14 @@ for (var i = 0; i< messages.length; i++){
 }
 document.getElementById("message").innerHTML=articles
 */
+
 var param = location.search
 
 if (param){
     param = param.substr(1, 1)
-    axios.get('https://newsapi.org/v2/top-headlines?' +
-        'sources=reddit-r-all&' +
-        'apiKey=591d3c16f1ab4f129bcd48a5b4480317')
+    axios.get('http://localhost:8080')
         .then((HttpResponse)=>{
-
+                console.log(param)
                 var titre=`${HttpResponse.data.articles[param].title}`
                 var auteur = `${HttpResponse.data.articles[param].author}`
                 var description = `${HttpResponse.data.articles[param].description}`
@@ -51,13 +50,15 @@ if (param){
                 </article>`
 
 
-            }
-        )
+            })
+        .catch((HttpResponse)=>{
+        console.log(HttpResponse)
+        console.log(HttpResponse.code)
+        console.log(HttpResponse.status)
+    })
 }
 else{
-    axios.get('https://newsapi.org/v2/top-headlines?' +
-        'sources=reddit-r-all&' +
-        'apiKey=591d3c16f1ab4f129bcd48a5b4480317')
+    axios.get('http://localhost:8080')
         .then((HttpResponse)=>{
             for (var i = 0; i < HttpResponse.data.totalResults; i++){
                 var titre=`${HttpResponse.data.articles[i].title}`
@@ -114,17 +115,14 @@ else{
                         </div>
                     </div>
                 </div>                    
-            </div>
-                    
-                    
-                    
-                    
-                    
-`
+            </div>`
                 }
-
-            }
-        )
+            })
+        .catch((HttpResponse)=>{
+        console.log(HttpResponse)
+        console.log(HttpResponse.code)
+        console.log(HttpResponse.status)
+    })
 }
 
 
